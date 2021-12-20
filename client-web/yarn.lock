@@ -114,17 +114,17 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@matteu-san/himig-web@^0.1.3":
+"@matteusan/himig-web@0.1.3":
   version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@matteu-san/himig-web/-/himig-web-0.1.3.tgz#9933e73e83341e332fda2f0404be08bd7a01bce7"
-  integrity sha512-c5Ks+1nwJ7cynTxMncQtQMZi4mJ1wvIh2y/XSaN11PY48O+0oJfrf5GdRpWVoprd82Hrn1EX5wf8zrgxnP6ONQ==
+  resolved "https://registry.yarnpkg.com/@matteusan/himig-web/-/himig-web-0.1.3.tgz#de8c82cc121f6dc533ffb8a3d6b607f558c5c674"
+  integrity sha512-U7bu9GA7h8SjsDV8kPBHBDK7eFHDh8rTCDwreGlTKFjGA6MZ4boKtdQcVNxQoCEPpeAyYrh4TpgUNqg3go7vJg==
   dependencies:
-    "@matteu-san/sentro" "0.1.10"
+    "@matteusan/sentro" "0.1.12"
 
-"@matteu-san/sentro@0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@matteu-san/sentro/-/sentro-0.1.10.tgz#cbd25bc42ffd8aaa79a97a10f239ecb9bd424e30"
-  integrity sha512-uGRfS5sHdBHfH/WR4B14BanG2sOLo98vbaAGuBzQTkzIvcFdTdSW1dmNrlXIftJIueA4sqotqSFGIy2DDoBPlw==
+"@matteusan/sentro@0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.12.tgz#4d5cf8df261b42f94bc7fe40ea49d376ea89177a"
+  integrity sha512-xsC7usEW/IJtiFt1jSjKy8bGIWN6sTQ8YDauUoaqVwbnCMZX689SDgZNWYm9K6YppgihAlRq2U9gIKeHYRZjPw==
 
 "@napi-rs/triples@1.0.3":
   version "1.0.3"
