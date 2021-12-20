@@ -114,6 +114,18 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@matteu-san/himig-web@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@matteu-san/himig-web/-/himig-web-0.1.3.tgz#9933e73e83341e332fda2f0404be08bd7a01bce7"
+  integrity sha512-c5Ks+1nwJ7cynTxMncQtQMZi4mJ1wvIh2y/XSaN11PY48O+0oJfrf5GdRpWVoprd82Hrn1EX5wf8zrgxnP6ONQ==
+  dependencies:
+    "@matteu-san/sentro" "0.1.10"
+
+"@matteu-san/sentro@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@matteu-san/sentro/-/sentro-0.1.10.tgz#cbd25bc42ffd8aaa79a97a10f239ecb9bd424e30"
+  integrity sha512-uGRfS5sHdBHfH/WR4B14BanG2sOLo98vbaAGuBzQTkzIvcFdTdSW1dmNrlXIftJIueA4sqotqSFGIy2DDoBPlw==
+
 "@napi-rs/triples@1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@napi-rs/triples/-/triples-1.0.3.tgz#76d6d0c3f4d16013c61e45dfca5ff1e6c31ae53c"
@@ -2497,7 +2509,7 @@ safe-buffer@~5.1.1:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sass@^1.44.0:
+sass@1.44.0:
   version "1.44.0"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.44.0.tgz#619aa0a2275c097f9af5e6b8fe8a95e3056430fb"
   integrity sha512-0hLREbHFXGQqls/K8X+koeP+ogFRPF4ZqetVB19b7Cst9Er8cOR0rc6RU7MaI4W1JmUShd1BPgPoeqmmgMMYFw==
