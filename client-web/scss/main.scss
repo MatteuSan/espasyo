@@ -1,0 +1,21 @@
+@use '~@matteusan/himig-web' as himig;
+
+@use '~@matteusan/himig-web/hc-button';
+@use '~@matteusan/himig-web/hc-card';
+@use '~@matteusan/himig-web/hc-footer';
+@use '~@matteusan/himig-web/hc-header';
+@use '~@matteusan/himig-web/hc-hero';
+@use '~@matteusan/himig-web/hc-navbar';
+@use '~@matteusan/himig-web/hc-tags';
+@use '~@matteusan/himig-web/hc-title-bar';
+
+@include himig.init() {
+    @include hc-button.use();
+    @include hc-card.use();
+    @include hc-footer.use();
+    @include hc-header.use();
+    @include hc-hero.use();
+    @include hc-navbar.use();
+    @include hc-tags.use();
+    @include hc-title-bar.use();
+}
