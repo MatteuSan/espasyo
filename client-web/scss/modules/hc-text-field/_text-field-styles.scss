@@ -1,0 +1,103 @@
+//
+//  Copyright (c) 2021 Matteu
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//
+
+@use '~@matteusan/himig-web/hc-core';
+
+$text-field-fill: 'input' !default;
+$text-field-ink: 'input-ink' !default;
+$text-field-border: 'accent-light' !default;
+
+$text-field-radius: 'radius-small' !default;
+
+$text-field-input-size: hc-core.tools-px-to-rem(14px) !default;
+$text-field-label-size: $text-field-input-size !default;
+$text-field-helper-size: hc-core.tools-px-to-rem(12px) !default;
+
+$text-field-label-ink: $text-field-ink !default;
+$text-field-helper-ink: 'surface-ink' !default;
+
+@mixin use() {
+    .hc-text-field {
+        width: 100%;
+        margin: 0;
+        display: block;
+        position: relative;
+        cursor: text;
+        
+        .hc-text-field__label {
+            width: max-content;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0.975rem;
+            padding: 0 0.7rem;
+            color: hc-core.theme-key-create('text-field-label-ink', hc-core.theme-token-switch('color', $text-field-label-ink));
+            font-size: hc-core.tools-px-to-rem(14px);
+            user-select: none;
+            cursor: text;
+            
+            @include hc-core.tools-prefix(transition, all 70ms ease);
+        }
+        
+        .hc-text-field__input {
+            width: 100% !important;
+            padding: 1.4rem 0.5rem 0.275rem 0.5rem;
+            font-size: hc-core.theme-key-create('text-field-text-size', hc-core.theme-token-switch('number', $text-field-input-size));
+            background-color: hc-core.theme-key-create('text-field-fill', hc-core.theme-token-switch('color', $text-field-fill));
+            color: hc-core.theme-key-create('text-field-ink', hc-core.theme-token-switch('color', $text-field-ink));
+            border: 2px solid hc-core.theme-key-create('text-field-border', hc-core.theme-token-switch('color', $text-field-fill));
+            border-radius: hc-core.theme-key-create('text-field-radius', hc-core.theme-token-switch('number', $text-field-radius));
+            outline: none;
+            resize: none;
+            @include hc-core.tools-prefix(transition, all 0.1s ease);
+            
+            &:focus {
+                outline: none;
+                @include hc-core.theme-key-bind('text-field-border', hc-core.theme-token-switch('color', $text-field-border));
+            }
+            
+            &::placeholder {
+                color: rgba(0 0 0 / 0) !important;
+                user-select: none !important;
+            }
+            
+            &:focus-within,
+            &:not(:placeholder-shown) {
+                padding: 1.4rem 0.5rem 0.275rem 0.5rem;
+                
+                & + .hc-text-field__label {
+                    width: auto;
+                    top: 0.4rem;
+                    margin: 0 0 0 0.3rem;
+                    padding: 0 0.4rem 0 0.3rem;
+                    font-size: ($text-field-label-size - hc-core.tools-px-to-rem(3px));
+                    pointer-events: none;
+                }
+            }
+        }
+        
+        .hc-text-field__helper {
+            margin-top: 7px;
+            color: hc-core.theme-key-create('text-field-helper-ink', hc-core.theme-token-switch('color', $text-field-helper-ink));
+            font-size: hc-core.theme-key-create('text-field-helper-size', hc-core.theme-token-switch('number', $text-field-helper-size));
+        }
+    }
+}

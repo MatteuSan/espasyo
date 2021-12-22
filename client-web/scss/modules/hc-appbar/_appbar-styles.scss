@@ -1,0 +1,105 @@
+//
+//  Copyright (c) 2021 Matteu
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//
+
+@use 'node_modules/@matteusan/himig-web/hc-core';
+
+$appbar-fill: 'surface' !default;
+$appbar-border: $appbar-fill !default;
+
+$appbar-items: 4 !default;
+
+$appbar-icon-size: hc-core.tools-px-to-rem(24px) !default;
+$appbar-label-size: hc-core.tools-px-to-rem(12px) !default;
+
+$appbar-gap: 0.7rem !default;
+$appbar-breakpoint: 'medium' !default;
+
+@mixin use() {
+    .hc-appbar {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 0.5rem 0.7rem;
+        background: hc-core.theme-key-create('appbar-fill', hc-core.theme-token-switch('color', $appbar-fill));
+        
+        @include hc-core.helper-breakpoint($appbar-breakpoint) {
+            position: relative;
+        }
+        
+        ul {
+            display: grid;
+            grid-template-columns: repeat(#{hc-core.theme-key-create('appbar-items', hc-core.theme-token-switch('number', $appbar-items))}, 1fr);
+            grid-gap: hc-core.theme-key-create('appbar-gap', hc-core.theme-token-switch('number', $appbar-gap));
+    
+            @include hc-core.helper-breakpoint($appbar-breakpoint) {
+                grid-gap: calc(#{$appbar-gap} * 2);
+            }
+        }
+        
+        .hc-appbar__item {
+            list-style: none;
+    
+            &.active {
+                color: hc-core.theme-token-switch('color', 'accent-light');
+                
+                .hc-appbar__label {
+                    @include hc-core.helper-breakpoint($appbar-breakpoint) {
+                        font-weight: 700;
+                    }
+                }
+            }
+            
+            a {
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+                
+                .hc-appbar__icon {
+                    width: hc-core.theme-key-create('appbar-icon-size', hc-core.theme-token-switch('number', $appbar-icon-size));
+                    height: hc-core.theme-key-create('appbar-icon-size', hc-core.theme-token-switch('number', $appbar-icon-size));
+                    color: inherit;
+                    font-size: hc-core.theme-key-create('appbar-icon-size', hc-core.theme-token-switch('number', $appbar-icon-size));
+    
+                    @include hc-core.helper-breakpoint($appbar-breakpoint) {
+                        $appbar-gap: 0.2rem;
+                        margin-right: hc-core.theme-key-create('appbar-gap', hc-core.theme-token-switch('number', $appbar-gap));
+                    }
+                    
+                    > svg {
+                        width: hc-core.theme-key-create('appbar-icon-size', hc-core.theme-token-switch('number', $appbar-icon-size));
+                        height: hc-core.theme-key-create('appbar-icon-size', hc-core.theme-token-switch('number', $appbar-icon-size));
+                    }
+                }
+                
+                .hc-appbar__label {
+                    color: inherit;
+                    font-size: hc-core.theme-key-create('appbar-label-size', hc-core.theme-token-switch('number', $appbar-label-size));
+    
+                    @include hc-core.helper-breakpoint($appbar-breakpoint) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

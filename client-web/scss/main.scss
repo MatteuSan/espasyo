@@ -1,15 +1,33 @@
 @use '~@matteusan/himig-web' as himig;
 
-@use '~@matteusan/himig-web/hc-button';
+@use '~@matteusan/himig-web/hc-button' with (
+    $button-label-size: himig.tools-px-to-rem(14px)
+);
 @use '~@matteusan/himig-web/hc-card';
 @use '~@matteusan/himig-web/hc-footer';
 @use '~@matteusan/himig-web/hc-header';
 @use '~@matteusan/himig-web/hc-hero';
-@use '~@matteusan/himig-web/hc-navbar';
+@use '~@matteusan/himig-web/hc-navbar' with (
+    $navbar-breakpoint: 'large'
+);
 @use '~@matteusan/himig-web/hc-tags';
 @use '~@matteusan/himig-web/hc-title-bar';
 
-@include himig.init() {
+@use 'modules/hc-appbar';
+@use 'modules/hc-text-field';
+
+// @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+@include himig.init(
+    $colors: (
+        'accent': ((#e774d9, #e228b5, #720949) #fff)
+    ),
+    $input: (
+        'default': #ecade6,
+        'ink': #000
+    )
+) {
+    @include hc-appbar.use();
     @include hc-button.use();
     @include hc-card.use();
     @include hc-footer.use();
@@ -17,5 +35,13 @@
     @include hc-hero.use();
     @include hc-navbar.use();
     @include hc-tags.use();
+    @include hc-text-field.use();
     @include hc-title-bar.use();
+    
+    .content-wrap {
+        width: calc(100% - 30px);
+        max-width: 1077px;
+        margin: 0 auto;
+        padding: 75px 0 25px 0;
+    }
 }

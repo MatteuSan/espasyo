@@ -42,7 +42,9 @@ interface HCNavBarTriggerProps {
 const HCNavbar: React.FC<HCNavBarProps> = ({ trigger, children }) => {
     return (
         <nav className={`hc-navbar${ trigger ? ' open' : '' }`}>
-            { children }
+            <ul>
+                { children }
+            </ul>
         </nav>
     );
 };
@@ -51,9 +53,11 @@ const HCNavbarItem: React.FC<HCNavbarItemProps> = ({ label, link, children }) =>
     const router = useRouter();
     const isActive = router.pathname === link;
     return (
-        <Link href={ link } passHref>
-            <span className={`hc-navbar__item${ isActive ? ' active' : '' }`}>{ label || children }</span>
-        </Link>
+        <li>
+            <Link href={ link } passHref>
+                <span className={`hc-navbar__item${ isActive ? ' active' : '' }`}>{ label || children }</span>
+            </Link>
+        </li>
     );
 }
 

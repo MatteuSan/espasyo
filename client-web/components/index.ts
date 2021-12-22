@@ -21,24 +21,33 @@
  *
  */
 
+import { HCAppbar, HCAppbarItem } from './HCAppbar';
 import HCButton from "./HCButton";
 import HCCard from "./HCCard";
 import HCFooter from "./HCFooter";
-import HCHeader from "./HCHeader";
+import { HCHeader, HCHeaderBrand, HCHeaderSearch, HCHeaderActions, HCHeaderDiv } from "./HCHeader";
 import HCHero from "./HCHero";
 import { HCNavbar, HCNavbarItem, HCNavbarTrigger } from "./HCNavbar";
 import HCTag from "./HCTag";
+import HCTextField from './HCTextField';
 import HCTitleBar from "./HCTitleBar";
 
 export {
+    HCAppbar,
+    HCAppbarItem,
     HCButton,
     HCCard,
     HCFooter,
     HCHeader,
+    HCHeaderBrand,
+    HCHeaderSearch,
+    HCHeaderActions,
+    HCHeaderDiv,
     HCHero,
     HCNavbar,
     HCNavbarItem,
     HCNavbarTrigger,
     HCTag,
+    HCTextField,
     HCTitleBar
 }

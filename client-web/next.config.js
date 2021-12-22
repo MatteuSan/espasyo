@@ -1,4 +1,14 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
-  reactStrictMode: true,
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
+
+module.exports = (phase, { defaultConfig }) => {
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    return {
+      apiPath: 'https://localhost:8000/api'
+    }
+  }
+  return {
+    reactStrictMode: true,
+    apiPath: 'https://espasyo-api.matteusan.me/api'
+  }
 }

@@ -21,16 +21,18 @@
  *
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import Link from 'next/link';
 
 interface HCHeaderProps {
-    title: string;
-    actionSection?: any;
+    title?: string;
+    link?: string;
+    actionSection?: ReactElement|any;
+    searchSection?: ReactElement|any;
     isScrollable?: boolean;
 }
 
-const HCHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable }) => {
+const HCHeader: React.FC<HCHeaderProps> = ({ isScrollable, children }) => {
 
     const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
 
@@ -44,18 +46,45 @@ const HCHeader: React.FC<HCHeaderProps> = ({ title, actionSection, isScrollable 
 
     return (
         <header className={`hc-header${ isScrollable ? ' hc-header--scrollable' : '' }${ isHeaderScrolled ? ' scrolled' : '' }`}>
-            <div className="hc-header__brand">
-                <Link href="/" passHref>
-                    <h2>{ title }</h2>
-                </Link>
-            </div>
-            { actionSection &&
-            <div className="hc-header__actions">
-                { actionSection }
-            </div>
-            }
+            { children }
         </header>
     );
 };
 
-export default HCHeader;
+const HCHeaderBrand: React.FC<HCHeaderProps> = ({ title, children, link = "/" }) => {
+    return (
+        <div className="hc-header__brand">
+            <Link href={ link } passHref>
+                <a rel="noreferrer">
+                    <h2>{ title || children }</h2>
+                </a>
+            </Link>
+        </div>
+    );
+}
+
+const HCHeaderSearch: React.FC<HCHeaderProps> = ({ searchSection, children }) => {
+    return (
+        <div className="hc-header__search">
+            { searchSection || children }
+        </div>
+    );
+}
+
+const HCHeaderActions: React.FC<HCHeaderProps> = ({ actionSection, children }) => {
+    return (
+        <div className="hc-header__actions">
+            { actionSection || children }
+        </div>
+    );
+}
+
+const HCHeaderDiv: React.FC<HCHeaderProps> = ({ children }) => {
+    return (
+        <div>
+            { children }
+        </div>
+    );
+}
+
+export { HCHeader, HCHeaderBrand, HCHeaderSearch, HCHeaderActions, HCHeaderDiv };
