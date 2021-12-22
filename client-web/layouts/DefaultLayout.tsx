@@ -21,7 +21,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, child
         <>
             <Head>
                 <title>{ `${ title } - ${ site.name }` }</title>
-                <link href={`https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp`} rel="stylesheet" />
 
                 <meta property="og:title" content={`${ title } - ${ site.name }`} />
                 <meta property="og:description" content={ description || `Your personal expression space with a twist.` } />
