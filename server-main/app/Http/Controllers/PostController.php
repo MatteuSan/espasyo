@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
+use Cache;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Collection;
 use App\Models\Post;
 
 class PostController extends Controller {
 
-    public function index(): Collection {
-        return Post::all();
+    public function index(): AnonymousResourceCollection {
+        return PostResource::collection(Cache::remember('posts', 60*60*24, function () {
+            return Post::all();
+        }));
     }
 
     public function store(Request $request): Post {
@@ -18,20 +23,23 @@ class PostController extends Controller {
         ]);
 
         return Post::create([
-            'user_id' => 1,
-            'body'    => $request->body,
-            'likes'   => 0,
+            'poster' => $request->poster ?: 'Anonymous',
+            'body' => $request->body,
+            'background' => $request->background ?: '#232323',
+            'color' => $request->color ?: '#fff',
         ]);
     }
 
-    public function show($user, $id) {
-        //
+    public function show($id): Post {
+        return Post::find($id)->first();
     }
 
     public function update(Request $request, int $id): Post {
         $post = Post::find($id);
         $post->update([
-            'body' => $request->body,
+            'body' => $request->body ?: $post->body,
+            'background' => $request->background ?: $post->background,
+            'color' => $request->color ?: $post->color
         ]);
 
         return $post;
@@ -48,8 +56,9 @@ class PostController extends Controller {
     public function like(int $id): Post {
         $post = Post::find($id);
         $currentLikes = $post->likes;
+
         return $post->update([
-            'likes' => $currentLikes + 1
+            'likes' => $currentLikes + 1,
         ]);
     }
 }

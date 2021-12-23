@@ -9,9 +9,10 @@ class CreatePostsTable extends Migration {
     public function up() {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->string('poster');
             $table->string('body');
-            $table->integer('likes')->default(0);
+            $table->string('background');
+            $table->string('color');
             $table->timestamps();
         });
     }

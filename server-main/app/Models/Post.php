@@ -10,8 +10,9 @@ class Post extends Model {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'poster',
         'body',
-        'likes'
+        'background',
+        'color'
     ];
 }
