@@ -41,11 +41,11 @@ class PostController extends Controller {
         return Post::destroy($id);
     }
 
-    public function search(string $query) {
+    public function search(string $query): Collection {
         return Post::where('body', 'like', '%' . $query . '%')->get();
     }
 
-    public function like(int $id) {
+    public function like(int $id): Post {
         $post = Post::find($id);
         $currentLikes = $post->likes;
         return $post->update([
