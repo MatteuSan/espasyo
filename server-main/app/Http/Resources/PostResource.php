@@ -8,6 +8,7 @@ class PostResource extends JsonResource {
 
     public function toArray($request) {
         return [
+            'id' => $this->id,
             'poster' => $this->poster,
             'body' => $this->body,
             'background' => $this->background,

@@ -19,7 +19,7 @@ class PostController extends Controller {
 
     public function store(Request $request): Post {
         $request->validate([
-            'body' => 'required|string|min:10',
+            'body' => 'required|string|min:10|max:255',
         ]);
 
         return Post::create([
