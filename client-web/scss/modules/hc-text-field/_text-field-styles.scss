@@ -42,6 +42,13 @@ $text-field-helper-ink: 'surface-ink' !default;
         position: relative;
         cursor: text;
         
+        &.error {
+            @include hc-core.theme-key-bind('text-field-ink', #cd1b1b);
+            @include hc-core.theme-key-bind('text-field-label-ink', #cd1b1b);
+            @include hc-core.theme-key-bind('text-field-helper-ink', #cd1b1b);
+            @include hc-core.theme-key-bind('text-field-border', #cd1b1b);
+        }
+        
         .hc-text-field__label {
             width: max-content;
             display: block;
@@ -92,10 +99,15 @@ $text-field-helper-ink: 'surface-ink' !default;
                     pointer-events: none;
                 }
             }
+            
+            &[type='color'] {
+                min-height: 54px;
+            }
         }
         
         .hc-text-field__helper {
             margin-top: 7px;
+            padding: 0 0.4rem;
             color: hc-core.theme-key-create('text-field-helper-ink', hc-core.theme-token-switch('color', $text-field-helper-ink));
             font-size: hc-core.theme-key-create('text-field-helper-size', hc-core.theme-token-switch('number', $text-field-helper-size));
         }

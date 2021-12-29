@@ -9,7 +9,7 @@ import {
     HCHeaderDiv,
 } from '../components';
 import { site } from '../constants/site';
-import { MdDashboard, MdHome, MdOutlineTrendingUp } from 'react-icons/md';
+import { MdInfoOutline, MdOutlineHome } from 'react-icons/md';
 
 interface DefaultLayoutProps {
     title: string;
@@ -40,14 +40,10 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, child
                 </HCHeaderBrand>
                 <HCHeaderActions>
                     <HCAppbar>
-                        <HCAppbarItem icon={ <MdHome /> } label="Home" />
-                        <HCAppbarItem icon={ <MdOutlineTrendingUp /> } label="Trends" link="/trends" />
-                        <HCAppbarItem icon={ <MdDashboard /> } label="Dashboard" link="/dashboard" />
+                        <HCAppbarItem icon={ <MdOutlineHome /> } label="Home" />
+                        <HCAppbarItem icon={ <MdInfoOutline /> } label="About" link="/about" />
                     </HCAppbar>
                 </HCHeaderActions>
-                <HCHeaderDiv>
-                    <HCButton type="filled inverted">Sign Up</HCButton>
-                </HCHeaderDiv>
             </HCHeader>
             <main className="content-wrap">
                 { children }

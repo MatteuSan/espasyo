@@ -1,13 +1,14 @@
 import React from 'react';
 import { NextPage } from 'next';
 import DefaultLayout from '../layouts/DefaultLayout';
+import { HCTitleBar } from '../components';
 
-const TrendsPage: NextPage = () => {
+const AboutPage: NextPage = () => {
     return (
         <DefaultLayout title="Trends">
-            Trends
+            <HCTitleBar>About Espasyo</HCTitleBar>
         </DefaultLayout>
     );
 };
 
-export default TrendsPage;
+export default AboutPage;

@@ -26,18 +26,37 @@ import Link from 'next/link';
 
 interface HCButtonProps {
     label?: string;
-    icon?: string;
+    icon?: any;
     iconTrailing?: string;
     type?: string;
+    context?: any;
     link?: string | null;
     isDisabled?: boolean;
+    isSubmit?: boolean;
+    isReset?: boolean;
+    onClick?: any;
 }
 
-const HCButton: React.FC<HCButtonProps> = ({ label, icon, iconTrailing, type, link, isDisabled, children }) => {
+const HCButton: React.FC<HCButtonProps> = ({
+   label,
+   icon,
+   iconTrailing,
+   type,
+   link,
+   isDisabled,
+   onClick,
+   children,
+   context = 'button',
+}) => {
 
     const ButtonBase = (
-        <button className={
-            `hc-button${ type?.includes('outlined') ? ' hc-button--outlined' : type?.includes('filled') ? ' hc-button--filled' : '' }${ type?.includes('inverted') ? ' hc-button--inverted' : '' }${ type?.includes('full-width') ? ' hc-button--full-width' : '' }${ isDisabled ? ' disabled' : '' }` } disabled={ isDisabled }>
+        <button
+            className={ `hc-button
+            ${ type?.includes('outlined') ? ' hc-button--outlined' : type?.includes('filled') ? ' hc-button--filled' : '' }${ type?.includes('inverted') ? ' hc-button--inverted' : '' }${ type?.includes('full-width') ? ' hc-button--full-width' : '' }${ isDisabled ? ' disabled' : '' }${ !children ? ' hs-button--icon-only' : '' }` }
+            disabled={ isDisabled }
+            type={ context }
+            onClick={ onClick }
+        >
             { icon && <i className="hc-button__icon material-icons">{ icon }</i> }
             { label || children && <span className="hc-button__label">{ label || children }</span> }
             { iconTrailing && <i className="hc-button__icon material-icons">{ iconTrailing }</i> }

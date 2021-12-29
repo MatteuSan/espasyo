@@ -25,15 +25,16 @@ import React from 'react';
 import HCTag from "./HCTag";
 
 interface HCCardProps {
-    title: string;
+    title?: string;
     icon?: string;
     description?: string;
     media?: string;
     tags?: any;
+    style?: Object;
     hasNoAction?: boolean;
 }
 
-const HCCard: React.FC<HCCardProps> = ({ title, icon, description, media, tags, hasNoAction, children }) => {
+const HCCard: React.FC<HCCardProps> = ({ title, icon, description, media, tags, hasNoAction, children, style }) => {
     if (hasNoAction) {
         return (
             <div className="hc-card">
@@ -42,7 +43,7 @@ const HCCard: React.FC<HCCardProps> = ({ title, icon, description, media, tags, 
                     <img src={ media } alt={ title + ` media` } loading="lazy" />
                 </div>
                 }
-                <div className="hc-card__content">
+                <div className="hc-card__content" style={ style }>
                     <div>
                         <div className="hc-card__title">
                             { icon && <i className="hc-card__title__icon material-icons" aria-hidden="true">{ icon }</i> }
@@ -72,7 +73,7 @@ const HCCard: React.FC<HCCardProps> = ({ title, icon, description, media, tags, 
                     <img src={ media } alt={ title + ` media` } />
                 </div>
                 }
-                <div className="hc-card__content">
+                <div className="hc-card__content" style={ style }>
                     <div>
                         <div className="hc-card__title">
                             { icon && <i className="hc-card__title__icon material-icons" aria-hidden="true">{ icon }</i> }

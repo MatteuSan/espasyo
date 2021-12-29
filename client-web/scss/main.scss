@@ -1,11 +1,12 @@
 @use '~@matteusan/himig-web' as himig;
 
 @use '~@matteusan/himig-web/hc-button' with (
+    $button-style: 'playful',
     $button-label-size: himig.tools-px-to-rem(14px)
 );
-@use '~@matteusan/himig-web/hc-card';
+@use '~@matteusan/himig-web/hc-card' with ($card-style: 'playful');
 @use '~@matteusan/himig-web/hc-footer';
-@use '~@matteusan/himig-web/hc-header';
+@use '~@matteusan/himig-web/hc-header' with ($header-fill: 'surface-dark');
 @use '~@matteusan/himig-web/hc-hero';
 @use '~@matteusan/himig-web/hc-navbar' with (
     $navbar-breakpoint: 'large'
@@ -20,15 +21,20 @@
 
 @include himig.init(
     $colors: (
-        'accent': ((#e774d9, #e228b5, #720949) #fff)
+        'background': (#1c0014, #fff),
+        'surface': ((#e774d9, #e228b5, #720949) #fff),
+        'accent': ((#e7c674, #e2a128, #724809) #000),
     ),
     $input: (
-        'default': #ecade6,
+        'default': #deb6d6,
         'ink': #000
     )
 ) {
     @include hc-appbar.use();
     @include hc-button.use();
+    .hs-button--icon-only {
+        min-width: max-content !important;
+    }
     @include hc-card.use();
     @include hc-footer.use();
     @include hc-header.use();
@@ -38,10 +44,75 @@
     @include hc-text-field.use();
     @include hc-title-bar.use();
     
+    .hc-title-bar {
+        margin: 0 0 1.3rem 0 !important;
+    }
+    
+    .hc-form {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-end;
+        padding: 1rem;
+        margin-bottom: 1.3rem;
+        background-color: himig.theme-token-get('surface-dark');
+        color: himig.theme-token-get('surface-ink');
+        border-radius: himig.theme-token-get('radius-medium');
+        
+        & > * + * {
+            margin-top: 0.7rem;
+        }
+        
+        .hc-form__section {
+            width: 100%;
+            display: flex;
+            
+            &.row {
+                flex-flow: row nowrap;
+                
+                & > * + * {
+                    margin-left: 0.7rem;
+                }
+            }
+            
+            &.column {
+                flex-flow: column nowrap;
+                
+                & > * + * {
+                    margin-top: 0.7rem;
+                }
+            }
+        }
+    }
+    
     .content-wrap {
         width: calc(100% - 30px);
         max-width: 1077px;
         margin: 0 auto;
         padding: 75px 0 25px 0;
+    }
+    
+    .grid {
+        margin: 0.7rem 0;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1rem;
+        
+        @include himig.helper-breakpoint('medium') {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    
+        @include himig.helper-breakpoint('large') {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        > a .hs-button,
+        > .hs-button {
+            min-width: 100% !important;
+            min-height: 100%;
+        }
+        
+        a {
+            text-decoration: none !important;
+        }
     }
 }
